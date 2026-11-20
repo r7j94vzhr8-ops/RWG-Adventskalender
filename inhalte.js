@@ -7,6 +7,8 @@
    HTML erlaubt: <p>Absatz</p>, <h3>Überschrift</h3>,
    <ol><li>Übung</li></ol>, <strong>Fett</strong>, <blockquote>Tipp</blockquote>.
    Zwischen Tagesblöcken steht ein Komma. Backticks (`) im Inhalt vermeiden.
+   Bilder zwischen Textabsätzen: siehe vorlage-bilder.html.
+   Bilddateien neben index.html ablegen und ebenfalls auf GitHub hochladen.
 */
 
 window.KALENDER = {
@@ -28,6 +30,14 @@ window.TAGESINHALTE = [
       <h3>2. Deine Übungen</h3>
       <ol>
         <li><strong>Übung eins:</strong> Ablauf, Wiederholungen und Pausen eintragen.</li>
+        <figure class="uebungsbild">
+          <img src="liegestuetz-start.png" alt="Startposition">
+          <figcaption>1. Startposition</figcaption>
+        </figure>
+        <figure class="uebungsbild">
+          <img src="liegestuetz-ende.png" alt="Endposition">
+          <figcaption>2. Endposition</figcaption>
+        </figure>
         <li><strong>Übung zwei:</strong> Hier ist Platz für eine ausführliche Erklärung.</li>
         <li><strong>Übung drei:</strong> Ergänze bei Bedarf eine leichtere oder schwierigere Variante.</li>
       </ol>
