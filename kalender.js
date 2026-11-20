@@ -47,7 +47,35 @@ async function openDay(day, button) {
   opened.add(day); try { localStorage.setItem(`rwg-advent-${calendarYear}`,JSON.stringify([...opened])); } catch {}
   button.classList.remove('opening'); busy = false; refresh();
 }
-$('unlock').addEventListener('click', () => {override = !override; $('notice').textContent = ''; refresh();});
+const TRAINER_PASSWORD = 'RWGTrainer';
+$('unlock').addEventListener('click', () => {
+  if (override) { override = false; $('notice').textContent = ''; refresh(); return; }
+  $('trainer-form').reset();
+  $('trainer-error').textContent = '';
+  $('trainer-password').removeAttribute('aria-invalid');
+  $('trainer-dialog').showModal();
+  document.body.classList.add('modal-open');
+});
+$('trainer-form').addEventListener('submit', event => {
+  event.preventDefault();
+  if ($('trainer-password').value !== TRAINER_PASSWORD) {
+    $('trainer-error').textContent = 'Das Passwort stimmt nicht. Bitte versuche es erneut.';
+    $('trainer-password').setAttribute('aria-invalid', 'true');
+    $('trainer-password').focus();
+    $('trainer-password').select();
+    return;
+  }
+  override = true;
+  $('notice').textContent = '';
+  refresh();
+  $('trainer-dialog').close();
+});
+$('trainer-cancel').addEventListener('click', () => $('trainer-dialog').close());
+$('trainer-dialog').addEventListener('close', () => {
+  $('trainer-form').reset();
+  document.body.classList.remove('modal-open');
+  $('unlock').focus();
+});
 for (const id of ['close','done']) $(id).addEventListener('click', () => $('day-dialog').close());
 $('day-dialog').addEventListener('click', event => {if(event.target === $('day-dialog')) {const r = $('day-dialog').getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) $('day-dialog').close();}});
 $('day-dialog').addEventListener('close', () => {document.body.classList.remove('modal-open'); activeDoor?.focus();});

@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>RWG · Adventskalender</title>
-  <link rel="stylesheet" href="kalender.css?v=creme-2">
+  <link rel="stylesheet" href="kalender.css?v=trainer-1">
   <script src="inhalte.js" defer></script>
-  <script src="kalender.js" defer></script>
+  <script src="kalender.js?v=trainer-1" defer></script>
 </head>
 <body>
   <main>
@@ -33,6 +33,16 @@
     <footer><span id="progress">0 von 24 Türchen entdeckt</span><span>24 Tage. Ein Team.</span></footer>
     <p id="notice" class="notice" role="status" aria-live="polite"></p>
   </main>
+  <dialog id="trainer-dialog" aria-labelledby="trainer-title">
+    <form id="trainer-form" class="trainer-form">
+      <h2 id="trainer-title">Alle Türchen freigeben</h2>
+      <p>Gib das Trainer-Passwort ein, um die Datumssperre auszuschalten.</p>
+      <label for="trainer-password">Passwort</label>
+      <input id="trainer-password" type="password" autocomplete="off" required autofocus aria-describedby="trainer-error">
+      <p id="trainer-error" class="trainer-error" role="alert"></p>
+      <div class="trainer-actions"><button id="trainer-cancel" type="button" class="button trainer-cancel">Abbrechen</button><button type="submit" class="button">Freigeben</button></div>
+    </form>
+  </dialog>
   <dialog id="day-dialog" aria-labelledby="day-title">
     <div class="dialog-bar"><span id="day-label" class="eyebrow"></span><button id="close" class="close" aria-label="Türchen schließen" autofocus>×</button></div>
     <article class="day-content"><p id="day-category" class="eyebrow"></p><h2 id="day-title"></h2><p id="day-meta" class="meta"></p><div id="day-body"></div></article>
