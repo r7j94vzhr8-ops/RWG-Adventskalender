@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RWG · Adventskalender</title>
+  <link rel="stylesheet" href="kalender.css?v=creme-2">
+  <script src="inhalte.js" defer></script>
+  <script src="kalender.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="heading">
+      <p class="eyebrow">RWG Mömbris-Königshofen · 01—24 Dezember</p>
+      <h1>Jeden Tag ein bisschen <em>stärker.</em></h1>
+      <p>Dein Trainings-Adventskalender. Such dir ein Türchen und entdecke, was heute auf dich wartet.</p>
+    </header>
+    <section class="toolbar" aria-label="Kalendereinstellungen">
+      <div><strong id="season">Adventskalender</strong><p id="status" role="status" aria-live="polite"></p></div>
+      <button id="unlock" class="button" type="button" aria-pressed="false">Alle Türchen freigeben</button>
+    </section>
+    <section id="calendar" class="calendar" aria-label="Adventskalender mit 24 Türchen">
+      <img id="picture" src="kalenderbild.png" alt="Zwei RWG-Maskottchen mit Weihnachtsmützen im festlichen Kranz" width="1152" height="1368">
+      <div id="doors" hidden></div>
+      <div id="missing" class="missing" hidden>
+        <span class="eyebrow">Dein Kalenderbild</span>
+        <h2>Noch das Bild einsetzen.</h2>
+        <p>Wähle dein RWG-Weihnachtsbild aus. Danach liegen alle 24 Türchen direkt auf dem Bild.</p>
+        <label class="button">Bild auswählen<input id="image-input" type="file" accept="image/png,image/jpeg,image/webp"></label>
+        <p class="small">Oder speichere es als <strong>kalenderbild.png</strong> neben dieser HTML-Datei. So ist es auch beim Weitergeben dabei.</p>
+      </div>
+    </section>
+    <footer><span id="progress">0 von 24 Türchen entdeckt</span><span>24 Tage. Ein Team.</span></footer>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+  </main>
+  <dialog id="day-dialog" aria-labelledby="day-title">
+    <div class="dialog-bar"><span id="day-label" class="eyebrow"></span><button id="close" class="close" aria-label="Türchen schließen" autofocus>×</button></div>
+    <article class="day-content"><p id="day-category" class="eyebrow"></p><h2 id="day-title"></h2><p id="day-meta" class="meta"></p><div id="day-body"></div></article>
+    <div class="dialog-footer"><span>RWG · Gemeinsam durch den Advent</span><button id="done" class="button">Zurück zum Kalender</button></div>
+  </dialog>
+</body>
+</html>
